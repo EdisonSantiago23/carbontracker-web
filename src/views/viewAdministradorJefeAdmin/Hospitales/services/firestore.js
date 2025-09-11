@@ -1,0 +1,77 @@
+import { db } from "../../../../Firebase";
+
+export const getHispitales = observer => {
+  return db.collection("HOSPITALES").onSnapshot(observer);
+};
+export const getUserByConjunto = (observer, conjuntoID) => {
+  return db.collection("usuarios").where("ConjuntoUidResidencia", "==", conjuntoID).onSnapshot(observer);
+};
+export const deleteBomba = idBomba => {
+  return db.collection("HOSPITALES").doc(idBomba).delete();
+};
+export const newHospital = data => {
+  return db.collection("HOSPITALES").doc().set({
+    Nombre: data.Nombre,
+    Direccion: data.Direccion,
+    Telefono: data.Telefono,
+    FechaRegistro: new Date(),
+    Detalle: data.Detalle
+  });
+};
+export const updateHospital = (data, id) => {
+  return db.collection("HOSPITALES").doc(id).update({
+    Nombre: data.Nombre,
+    Direccion: data.Direccion,
+    Telefono: data.Telefono,
+    FechaRegistro: new Date(),
+    Detalle: data.Detalle
+  });
+};
+export const newUser = values => {
+  return db.collection("usuarios").doc(values.Correo).set({
+    Nombre: values.Nombre,
+    Apellido: values.Apellido,
+    Cedula: values.Cedula,
+    Correo: values.Correo,
+    Telefono: values.Telefono,
+    Alicuota: values.Alicuota,
+    Casa: values.Casa1 + values.Casa,
+    Rol: values.Rol,
+    ConjuntoUidResidencia: values.ConjuntoUidResidencia
+  });
+};
+export const updateUser = values => {
+  return db.collection("usuarios").doc(values.Correo).update({
+    Nombre: values.Nombre,
+    Apellido: values.Apellido,
+    Cedula: values.Cedula,
+    Correo: values.Correo,
+    Telefono: values.Telefono,
+    Alicuota: values.Alicuota,
+    Casa: values.Casa,
+    ConjuntoUidResidencia: values.ConjuntoUidResidencia
+  });
+};
+export const getBitacora = (observer, conjuntoID) => {
+  return db.collection("conjuntos").doc(conjuntoID).collection("bitacoraDigital").onSnapshot(observer);
+};
+export const updateUltimaExpensaConjunto = (idConjunto, UltimoMesAlicuota) => {
+  return db.collection("conjuntos").doc(idConjunto).update({
+    UltimoMesAlicuota: UltimoMesAlicuota
+  });
+};
+export const getConjunto = conjuntoId => {
+  return db.collection("conjuntos").doc(conjuntoId).get();
+};
+export const getUser = userId => {
+  return db.collection("usuarios").doc(userId).get();
+};
+export const getUsuariosMorosos = (conjuntoUid, userId) => {
+  return db.collection("conjuntos").doc(conjuntoUid).collection("cuentasPorCobrar").where("UsuarioId", "==", userId).get();
+};
+export const getRubros = (observer, conjuntoUid, tipo) => {
+  return db.collection("conjuntos").doc(conjuntoUid).collection("rubros").where("Tipo", "==", tipo).onSnapshot(observer);
+};
+export const getSubRubros = (conjuntoUid, Rubroid) => {
+  return db.collection("conjuntos").doc(conjuntoUid).collection("rubros").doc(Rubroid).get();
+};
