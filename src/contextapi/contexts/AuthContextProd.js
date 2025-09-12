@@ -1,9 +1,10 @@
 import React, { createContext, useEffect } from "react";
 import SplashScreen from "../../components/Common/SplashScreen";
 import { axiosInstance } from "../../utils/axs";
-import { db } from "../../Firebase";
+import { auth } from "../../Firebase";
 import * as FirestoreService from "../../views/login/services/firestore";
 import { useSnackbar } from "notistack";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 const authState = {
   isAuthenticated: false,
   isInitialised: false,
@@ -100,7 +101,7 @@ export const AuthProvider = ({
     });
     var user = null;
     var userUid = null;
-    await firebase.auth().signInWithEmailAndPassword(email, password).then(userCredential => {
+    await signInWithEmailAndPassword(auth, email, password).then(userCredential => {
       userUid = userCredential.user.uid;
       FirestoreService.loadWithEmail(email).then(respond => {
         user = respond.data();

@@ -11,6 +11,7 @@ const GuestGuard = ({
     user
   } = useAuth();
   let rol = user?.Rol;
+  console.log("user", user);
   console.log("rol", rol);
 
   if (isAuthenticated) {
