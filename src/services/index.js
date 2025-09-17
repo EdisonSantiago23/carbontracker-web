@@ -1,0 +1,24 @@
+export { default as Auth } from './login';
+export { default as EquiposService } from './equipos';
+export { default as HospitalService } from './hospital';
+export { default as AreaService } from './areas';
+export { default as MedicamentoService } from './medicamento';
+export { default as PacienteService } from './pacientes';
+export { default as HistorialPacienteService } from './historialPaciente';
+export { default as TratamientoService } from './tratamiento';
+export { default as CombinacionesService } from './combinaciones';
+export { default as SeguimientoService } from './seguimiento';
+export { default as HabitacionesService } from './habitaciones';
+export { default as historialEquiposService } from './historialEquipos';
+export { default as RolService } from './roles';
+export { default as FuncionalidadService } from './funcionalidades';
+export { default as SoporteService } from './soporte';
+export { default as CamaService } from './cama';
+export { default as UsuariosService } from './usuarios';
+export { default as EnfermerosService } from './enfermeros';
+export { default as EstadosService } from './estados';
+export { default as EquipoHistorialService } from './equipoHistorial';
+export { default as FuncionalidadesSistemaService } from './funcionalidadesSistema';
+export { default as MenuService } from './Menu';
+export { default as DocumentosService } from './documentos';
+
