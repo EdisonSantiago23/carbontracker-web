@@ -64,42 +64,41 @@ const routes = [
       },
       {
         exact: true,
-        path: "/administrador/hospitales",
+        path: "/administrador/Empresas",
         title: "Dashboard",
-        component: lazy(() => import("./views/Hospitales/Index")),
+        component: lazy(() => import("./views/Empresas/Index")),
       },
       {
         exact: true,
         title: "Dashboard",
-        path: "/administrador/hospitales/habitaciones/:threadKey",
-        component: lazy(() => import("./views/Hospitales/Habitaciones/Index")),
+        path: "/administrador/configuraciones/:threadKey",
+        component: lazy(() => import("./views/Configuraciones/Index")),
       },
       {
         exact: true,
         title: "Dashboard",
-        path: "/administrador/hospitales/personal/:threadKey",
-        component: lazy(() => import("./views/Hospitales/Personal/Index")),
+        path: "/administrador/usuarios/:threadKey",
+        component: lazy(() => import("./views/Usuarios/Index")),
       },
     ],
   },
 
   {
-    path: "/jefeAdmin",
+    path: "/empresa",
     guard: AuthGuard,
     layout: Layout,
     routes: [
       {
         exact: true,
         title: "Dashboard",
-        path: "/jefeAdmin/dashboard",
+        path: "/empresa/dashboard",
         component: lazy(() => import("./views/Dashboard")),
       },
-
       {
         exact: true,
-        title: "Enfermero",
-        path: "/jefeAdmin/hospitales/enfermero",
-        component: lazy(() => import("./views/Enfermero/Index")),
+        title: "Dashboard",
+        path: "/empresa/usuarios/:threadKey",
+        component: lazy(() => import("./views/Usuarios/Index")),
       },
     ],
   },

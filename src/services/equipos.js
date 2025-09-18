@@ -4,14 +4,14 @@ const db = firebase.firestore();
 class EquiposService {
   getAllEquiposById = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .onSnapshot(observer);
   };
   getEquiposById = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("Estado", "==", true)
@@ -19,7 +19,7 @@ class EquiposService {
   };
   getEquiposByEstado = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("Estado", "==", true)
@@ -27,7 +27,7 @@ class EquiposService {
   };
   getEquiposByEstadoTotal = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("Estado", "==", true)
@@ -36,7 +36,7 @@ class EquiposService {
   };
   deleteBomba = (idBomba, id) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(id)
       .collection("Pacientes")
       .doc(idBomba)
@@ -44,7 +44,7 @@ class EquiposService {
   };
   getReportesById = (observer, IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(idDoc)
@@ -54,7 +54,7 @@ class EquiposService {
   updateEquipo = (IdHospital, idDoc, form) => {
 
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(idDoc)
@@ -68,7 +68,7 @@ class EquiposService {
   updateEquipoReport = (IdHospital, idDoc) => {
 
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(idDoc)
@@ -79,7 +79,7 @@ class EquiposService {
   };
   updateEquipoByEstado = (IdHospital, idEquipo, paciente, datosCamas, estado) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(idEquipo)
@@ -98,7 +98,7 @@ class EquiposService {
   };
   newEquipo = (form, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(form.Serial)
@@ -114,7 +114,7 @@ class EquiposService {
   };
   newReporte = (data, IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(idDoc)
@@ -127,7 +127,7 @@ class EquiposService {
 
   actualizarEstadoHabitacionPaciente = (IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("IdPaciente", "==", idDoc)
@@ -136,7 +136,7 @@ class EquiposService {
   };
   getHabitacionesByPaciente = (IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("IdPaciente", "==", idDoc)
@@ -144,13 +144,13 @@ class EquiposService {
       .get();
   };
   limpiarBomba = async (IdHospital, idDoc) => {
-    const cama = await db.collection("Hospitales").doc(IdHospital).collection("Equipos").doc(idDoc);
+    const cama = await db.collection("Empresas").doc(IdHospital).collection("Equipos").doc(idDoc);
     const resultado = await cama.get();
     if (resultado.data().Alambrico) {
       return "ok"
     } else {
       return db
-        .collection("Hospitales")
+        .collection("Empresas")
         .doc(IdHospital)
         .collection("Equipos")
         .doc(idDoc)
@@ -168,7 +168,7 @@ class EquiposService {
   };
   asignarPaciente = (data, IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc(idDoc.id)
@@ -180,7 +180,7 @@ class EquiposService {
   };
   getCamasByHabitacion = (observer, IdHospital, IdHabitacion) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .where("IdHabitacion", "==", IdHabitacion)
@@ -191,7 +191,7 @@ class EquiposService {
   getEquipoByEstado = (observer, IdHospital) => {
 
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("EstadoEquipo", "==", 1)
@@ -199,36 +199,36 @@ class EquiposService {
       .where("Estado", "==", true)
       .onSnapshot(observer);
   };
-  getEquips = (observer, IdHospitales) => {
+  getEquips = (observer, IdEmpresas) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .orderBy('Fecha', 'desc')
       .where("Estado", "==", true)
       .onSnapshot(observer);
   };
-  getAllEquipos = (observer, IdHospitales) => {
+  getAllEquipos = (observer, IdEmpresas) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .onSnapshot(observer);
   };
-  getEquiposByArea = (observer, area, IdHospitales) => {
+  getEquiposByArea = (observer, area, IdEmpresas) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .orderBy('FechaOn', 'desc')
       .where("IdArea", "==", area)
       .where("Estado", "==", true)
       .onSnapshot(observer);
   };
-  getEquiposByAreaByEstado = (observer, area, IdHospitales) => {
+  getEquiposByAreaByEstado = (observer, area, IdEmpresas) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .orderBy('FechaOn', 'desc')
       .where("IdArea", "==", area)
@@ -236,10 +236,10 @@ class EquiposService {
       .where("Valor", "==", 1)
       .onSnapshot(observer);
   };
-  getEquipsByHabitacionAux = (observer, IdHospitales, IdHabitacion) => {
+  getEquipsByHabitacionAux = (observer, IdEmpresas, IdHabitacion) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .where("IdHabitacion", "==", IdHabitacion)
       .where("IdPaciente", "!=", null)
@@ -247,10 +247,10 @@ class EquiposService {
       .where("Estado", "==", true)
       .onSnapshot(observer);
   };
-  getEquipsByHabitacion = (observer, IdHospitales, IdHabitacion) => {
+  getEquipsByHabitacion = (observer, IdEmpresas, IdHabitacion) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .where("IdHabitacion", "==", IdHabitacion)
       .where("Estado", "==", true)
@@ -258,10 +258,10 @@ class EquiposService {
 
       .onSnapshot(observer);
   };
-  getEquipsByHabitacionCamas = (observer, IdHospitales, IdHabitacion) => {
+  getEquipsByHabitacionCamas = (observer, IdEmpresas, IdHabitacion) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Camas")
       .where("IdHabitacion", "==", IdHabitacion)
       .where("Estado", "==", true)
@@ -269,10 +269,10 @@ class EquiposService {
 
       .onSnapshot(observer);
   };
-  quitarEquipoCama = (IdHospitales, IdEquipo) => {
+  quitarEquipoCama = (IdEmpresas, IdEquipo) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .doc(IdEquipo)
       .update({
@@ -293,18 +293,18 @@ class EquiposService {
 
       });
   };
-  eliminarRegistro = (IdHospitales,Registro) => {
+  eliminarRegistro = (IdEmpresas,Registro) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .doc(Registro.id)
       .delete();
   };
-  estadoRegistro = (IdHospitales,Registro) => {
+  estadoRegistro = (IdEmpresas,Registro) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .doc(Registro.id)
       .update({

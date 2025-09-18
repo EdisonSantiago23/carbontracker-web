@@ -5,7 +5,7 @@ const storage = firebase.storage();
 class HospitalService {
   newHospital = (data) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc()
       .set({
         Nombre: data.Nombre,
@@ -19,7 +19,7 @@ class HospitalService {
   };
   updateHospital = (data, id) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(id)
       .update({
         Nombre: data.Nombre,
@@ -32,17 +32,17 @@ class HospitalService {
   };
   getHispitalById = async (IdHospital) => {
     return await db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .get();
   };
-  getHospitales = (observer) => {
-    return db.collection("Hospitales").onSnapshot(observer);
+  getEmpresas = (observer) => {
+    return db.collection("Empresas").onSnapshot(observer);
   };
 
   asignarEnfermero = (data, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .update({
         IdSoporte: data.IdSoporte,
@@ -52,13 +52,13 @@ class HospitalService {
 
   eliminarHospital = (IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .delete();
   };
   estadoHospital = (Hospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(Hospital.id)
       .update({
         Estado: !Hospital.data().Estado,
@@ -66,7 +66,7 @@ class HospitalService {
   };
   subirImagenes = async (imageAsFile) => {
     try {
-      const storageRef = storage.ref(`/images/hospitales/${imageAsFile.name}`);
+      const storageRef = storage.ref(`/images/Empresas/${imageAsFile.name}`);
       await storageRef.put(imageAsFile);
       const urlDownloadImage = await storageRef.getDownloadURL();
       return urlDownloadImage;

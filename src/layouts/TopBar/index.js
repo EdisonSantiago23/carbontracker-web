@@ -5,7 +5,6 @@ import Account from "./Account";
 import useAuth from "../../contextapi/hooks/useAuth";
 import { Box, Typography, Icon } from '@mui/material';
 import { TimerRender } from "@components";
-import { bgBlur } from '../../utils/cssStyles';
 import { styled } from '@mui/system';
 import { HospitalService } from "@services";
 
@@ -16,7 +15,6 @@ const HEADER_MOBILE = 64;
 const HEADER_DESKTOP = 92;
 
 const StyledRoot = styled(AppBar)(({ theme }) => ({
-  ...bgBlur({ color: "#051E34", opacity: 1 }),
   boxShadow: 'none',
   width:'100%',
   [theme.breakpoints.up('lg')]: {

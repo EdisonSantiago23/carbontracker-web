@@ -4,14 +4,14 @@ const db = firebase.firestore();
 class CamaService {
   getAllCamas = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .onSnapshot(observer);
   };
   getHabitacionesByHospital = (observer,IdHospital, IdHabitacion) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .where("IdHabitacion", "==",IdHabitacion)
@@ -19,7 +19,7 @@ class CamaService {
   };
   getCamasByArea = (observer,IdHospital, idHabitacion) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .where("IdHabitacion", "==",idHabitacion)
@@ -28,7 +28,7 @@ class CamaService {
   };
   getCamasByArea2 =   (observer,IdHospital, IdArea) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .where("IdArea", "==",IdArea)
@@ -36,7 +36,7 @@ class CamaService {
   };
   deleteCama = (idCama, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .doc(idCama)
@@ -44,7 +44,7 @@ class CamaService {
   };
   getHabitacion = (IdHospital,idHabitaciom) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Habitaciones")
       .doc(idHabitaciom)
@@ -52,7 +52,7 @@ class CamaService {
   };
   newCama = (IdHospital,data, habitacion,area) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc()
@@ -71,7 +71,7 @@ class CamaService {
   updateCama = (IdHospital,data, habitacion,area) => {
   
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc(data.id)
@@ -87,7 +87,7 @@ class CamaService {
   };
   updateCamaByEquipos = (IdHospital, IdCama,Equipo ) => {  
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc(IdCama)
@@ -98,7 +98,7 @@ class CamaService {
   };
   getHabitacionesByPaciente = (IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .where("IdPaciente", "==", idDoc)
@@ -107,7 +107,7 @@ class CamaService {
   };
   getHabitacionesByPaciente2 = (observer,IdHabitacion, IdPaciente) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHabitacion)
       .collection("Camas")
       .where("IdPaciente", "==", IdPaciente)
@@ -117,7 +117,7 @@ class CamaService {
 
   asignarPaciente = (data,datosCamas, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc(datosCamas.cama.id)
@@ -135,7 +135,7 @@ class CamaService {
   };
   limpiarCama = (IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc(idDoc)
@@ -149,7 +149,7 @@ class CamaService {
   };
   quitarEquipo = (IdHospital, IdCama) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Camas")
       .doc(IdCama)
@@ -160,18 +160,18 @@ class CamaService {
       });
   };
 
-  eliminarRegistro = (IdHospitales,Registro) => {
+  eliminarRegistro = (IdEmpresas,Registro) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Camas")
       .doc(Registro.id)
       .delete();
   };
-  estadoRegistro = (IdHospitales,Registro) => {
+  estadoRegistro = (IdEmpresas,Registro) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Camas")
       .doc(Registro.id)
       .update({

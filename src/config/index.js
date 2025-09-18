@@ -1,4 +1,4 @@
 import moment from './moment';
-import {MedicamentosCombinaTabla,MenuTabla,HospitalesTabla,FuncionalidadesTabla,MedicamentoTabla,ReporteTabla,TratamientoTabla,SoporteTabla,DocumentosTabla,EstadisticasTabla,EnfermeroTabla,RolesTabla,EstadosTabla,PacientesTabla,EquiposTabla,HabitacionesTabla,CamasTabla,PersonalTabla}from'./tablas';
+import {MedicamentosCombinaTabla,MenuTabla,EmpresasTabla,FuncionalidadesTabla,MedicamentoTabla,ReporteTabla,TratamientoTabla,SoporteTabla,DocumentosTabla,EstadisticasTabla,EnfermeroTabla,RolesTabla,EstadosTabla,PacientesTabla,EquiposTabla,HabitacionesTabla,CamasTabla,PersonalTabla}from'./tablas';
 
-export {moment,MedicamentosCombinaTabla,MedicamentoTabla,MenuTabla,FuncionalidadesTabla,   HospitalesTabla,ReporteTabla,TratamientoTabla,SoporteTabla,EstadisticasTabla,DocumentosTabla,EnfermeroTabla,RolesTabla,EquiposTabla,EstadosTabla,PacientesTabla,PersonalTabla,HabitacionesTabla,CamasTabla}
+export {moment,MedicamentosCombinaTabla,MedicamentoTabla,MenuTabla,FuncionalidadesTabla,   EmpresasTabla,ReporteTabla,TratamientoTabla,SoporteTabla,EstadisticasTabla,DocumentosTabla,EnfermeroTabla,RolesTabla,EquiposTabla,EstadosTabla,PacientesTabla,PersonalTabla,HabitacionesTabla,CamasTabla}

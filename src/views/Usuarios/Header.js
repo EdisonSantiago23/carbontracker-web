@@ -31,7 +31,7 @@ const Header = ({ className, ...rest }) => {
           <Link
             variant="body1"
             color="inherit"
-            to="/administrador/hospitales"
+            to="/administrador/Empresas"
             component={RouterLink}
           >
             Administración

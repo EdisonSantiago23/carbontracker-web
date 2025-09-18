@@ -10,12 +10,12 @@ import TableRow from "@mui/material/TableRow";
 import { Tooltip, IconButton, } from '@mui/material';
 import Box from "@mui/material/Box";
 import New from "./New/New";
-import { StyledTableRow, StyledTableCell } from "./../../../styles";
+import { StyledTableRow, StyledTableCell } from "./../../styles";
 import { useSnackbar } from "notistack";
-import { Autocomplete } from "../../../components";
+import { Autocomplete } from "../../components";
 import { sentenceCase } from 'change-case';
 import { HabitacionesService, EnfermerosService, CamaService } from "@services";
-import useAuth from "../../../contextapi/hooks/useAuth";
+import useAuth from "../../contextapi/hooks/useAuth";
 import { Container, confirmDialog, Label } from "@components";
 import { HabitacionesTabla } from "@config"
 import DeleteIcon from "@material-ui/icons/Delete";

@@ -1,5 +1,5 @@
 
-export const HospitalesTabla = () => {
+export const EmpresasTabla = () => {
   const columns = [
     { id: "estado", label: "Estado" },
     { id: "name", label: "Logo" },

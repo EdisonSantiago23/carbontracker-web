@@ -4,7 +4,7 @@ const db = firebase.firestore();
 class AreaService {
   newArea = (data, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Areas")
       .add({
@@ -15,7 +15,7 @@ class AreaService {
   };
   updateArea = (data, IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Habitaciones")
       .doc(idDoc)
@@ -28,7 +28,7 @@ class AreaService {
   };
   getAreaById = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Areas")
       .orderBy('Nombre', 'desc')
@@ -37,17 +37,17 @@ class AreaService {
   getHabitacionesByHospital = (observer, IdHospital, IdArea) => {
 
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Habitaciones")
       .where("IdArea", "==", IdArea)
       .onSnapshot(observer);
   };
-  getHabitacionesByAreaAndCamas = async (IdHospitales, area) => {
+  getHabitacionesByAreaAndCamas = async (IdEmpresas, area) => {
     const data = [];
     const habitaciones = await db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Habitaciones")
       .where("IdArea", "==", area)
       .get();
@@ -56,8 +56,8 @@ class AreaService {
       const dataMapped = await Promise.all(
         habitaciones.docs.map(async (ress) => {
           const totalCamas = await db
-            .collection("Hospitales")
-            .doc(IdHospitales)
+            .collection("Empresas")
+            .doc(IdEmpresas)
             .collection("Camas")
             .where("IdHabitacion", "==", ress.id)
             .get();

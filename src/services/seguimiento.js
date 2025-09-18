@@ -9,7 +9,7 @@ class SeguimientoService {
     TratamientoId
   ) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(pacienteId)
@@ -31,7 +31,7 @@ class SeguimientoService {
     enfermeroTurno
   ) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(pacienteId)

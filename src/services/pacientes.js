@@ -4,7 +4,7 @@ const db = firebase.firestore();
 class PacienteService {
   newPaciente = (data, threadKey, seguroPrivado) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(threadKey)
       .collection("Pacientes")
       .doc(data.Cedula)
@@ -27,7 +27,7 @@ class PacienteService {
   };
   updatePaciente = (data,datosCamas, id, threadKey, seguroPrivado) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(threadKey)
       .collection("Pacientes")
       .doc(id)
@@ -57,7 +57,7 @@ class PacienteService {
   };
   eliminarPaciente = (IdPaciente, id) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(id)
       .collection("Pacientes")
       .doc(IdPaciente)
@@ -65,7 +65,7 @@ class PacienteService {
   };
   altaPaciente = (threadKey, IdPaciente, idHistorial) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(threadKey)
       .collection("Pacientes")
       .doc(IdPaciente)
@@ -78,7 +78,7 @@ class PacienteService {
 
   updateEstadoPaciente = (IdHospital,IdPaciente, estado) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(IdPaciente)
@@ -96,7 +96,7 @@ class PacienteService {
   };
   getPacientesByEstado = (observer, IdHospital, estadoPaciente) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .where("EstadoPaciente", "==", estadoPaciente)
@@ -105,7 +105,7 @@ class PacienteService {
   getAllPacientes = (observer, IdHospital) => {
 
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .onSnapshot(observer);
@@ -113,7 +113,7 @@ class PacienteService {
 
   getPacienteByHabitacion = (IdHospital, idDoc) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Equipos")
       .where("IdPaciente", "==", idDoc)
@@ -122,7 +122,7 @@ class PacienteService {
   };
   getHistorialByUsers = (IdHospital, pacienteId) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(pacienteId)
@@ -131,7 +131,7 @@ class PacienteService {
   };
   getPacienteByCedula = (observer, idBomba, Cedula) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(idBomba)
       .collection("Pacientes")
       .where("Cedula", "==", Cedula.toString())
@@ -139,24 +139,24 @@ class PacienteService {
   };
   getPacienteById = (idBomba, Cedula) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(idBomba)
       .collection("Pacientes")
       .doc(Cedula)
       .get();
   };
-  eliminarRegistro = (IdHospitales,Registro) => {
+  eliminarRegistro = (IdEmpresas,Registro) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Pacientes")
       .doc(Registro.id)
       .delete();
   };
-  estadoRegistro = (IdHospitales,Registro) => {
+  estadoRegistro = (IdEmpresas,Registro) => {
     return db
-      .collection("Hospitales")
-      .doc(IdHospitales)
+      .collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Pacientes")
       .doc(Registro.id)
       .update({

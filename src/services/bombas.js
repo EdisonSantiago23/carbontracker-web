@@ -5,14 +5,14 @@ class BombasService {
   getAreaById = (observer, IdHospital) => {
     
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Areas")
       .onSnapshot(observer);
   };
   getHabitacionesByHospital = (observer, IdHospital, IdArea) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Habitaciones")
       .where("IdArea", "==", IdArea)

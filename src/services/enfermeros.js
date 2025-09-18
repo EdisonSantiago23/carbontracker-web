@@ -5,7 +5,7 @@ class EnfermerosService {
 
  updateEnfermero = (data,id,threadKey) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(threadKey)
       .collection("Enfermeros")
       .doc(id)
@@ -18,7 +18,7 @@ class EnfermerosService {
   };
   newEnfermero = (data,threadKey) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(threadKey)
       .collection("Enfermeros")
       .doc(data.Cedula)
@@ -31,14 +31,14 @@ class EnfermerosService {
   };
   getEnfermerosByHospital = (observer, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Enfermeros")
       .onSnapshot(observer);
   };
   deleteEnfermero = (idBomba,id) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(id)
       .collection("Enfermeros")
       .doc(idBomba)

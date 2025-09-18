@@ -4,7 +4,7 @@ const db = firebase.firestore();
 class HistorialPacienteService {
   getHistorialByPaciente = (IdHospital, pacienteId) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(pacienteId)
@@ -13,7 +13,7 @@ class HistorialPacienteService {
   };
   getHistorialByUsers = (IdHospital, pacienteId) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(pacienteId)
@@ -22,7 +22,7 @@ class HistorialPacienteService {
   };
   updateHistorial = (threadKey, IdPaciente, idHistorial, DetalleSalida) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(threadKey)
       .collection("Pacientes")
       .doc(IdPaciente)
@@ -36,7 +36,7 @@ class HistorialPacienteService {
   newHistoria = (data,datosCamas, idHistorial) => {
 
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(idHistorial)
       .collection("Pacientes")
       .doc(data.Cedula)
@@ -56,7 +56,7 @@ class HistorialPacienteService {
   };
   getHistorialByUser = (observer, IdHospital, pacienteId) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(pacienteId)

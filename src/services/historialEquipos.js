@@ -2,9 +2,9 @@ import firebase from "../Firebase";
 const db = firebase.firestore();
 
 class historialEquiposService {
-  getHistorialFirstEquipos = (observer,IdHospitales, idEquipos) => {
-  return  db.collection("Hospitales")
-      .doc(IdHospitales)
+  getHistorialFirstEquipos = (observer,IdEmpresas, idEquipos) => {
+  return  db.collection("Empresas")
+      .doc(IdEmpresas)
       .collection("Equipos")
       .doc(idEquipos)
       .collection("Historial")
@@ -14,9 +14,9 @@ class historialEquiposService {
 
 
   };
-  getHistorialByEquipo = (observer,IdHospitales, idEquipos,filter) => {
-    return  db.collection("Hospitales")
-        .doc(IdHospitales)
+  getHistorialByEquipo = (observer,IdEmpresas, idEquipos,filter) => {
+    return  db.collection("Empresas")
+        .doc(IdEmpresas)
         .collection("HistorialEquipos")
         .where('FechaOn', '>=', new Date(filter?.desde) )
         .where('FechaOn', '<=', new Date(filter?.hasta))

@@ -5,7 +5,7 @@ const storage = firebase.storage()
 class DocumentosService {
   newDocumento = (data, IdHospital) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Documentos")
       .add({
@@ -15,7 +15,7 @@ class DocumentosService {
   };
   deleteDocumento = (IdHospital, idDocumento) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Documentos")
       .doc(idDocumento)
@@ -24,15 +24,15 @@ class DocumentosService {
   getDocumentoById = (observer, IdHospital) => {
     console.error("IdHospital",IdHospital)
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Documentos")
       .orderBy('Nombre', 'desc')
       .onSnapshot(observer);
   };
   subirArchivos =async (imageAsFile) => {
-    await storage.ref(`/archivos/hospitales/${imageAsFile.name}`).put(imageAsFile)
-    let urlDownloadImage = await storage.ref('archivos/hospitales').child(imageAsFile.name).getDownloadURL();
+    await storage.ref(`/archivos/Empresas/${imageAsFile.name}`).put(imageAsFile)
+    let urlDownloadImage = await storage.ref('archivos/Empresas').child(imageAsFile.name).getDownloadURL();
     console.error("urlDownloadImage",urlDownloadImage)
     return(urlDownloadImage)
     

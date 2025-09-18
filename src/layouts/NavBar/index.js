@@ -40,32 +40,10 @@ const sectionsSuperAdministrador = [
       {
         title: "Administración ",
         icon: HomeWorkSharp,
-        href: "/administrador/hospitales",
+        href: "/administrador/Empresas",
       },
 
-      {
-        title: "Configuraciones",
-        icon: Build,
-        href: "/jefeAdmin/configuraciones/roles",
-        items: [
-          {
-            title: "Usuarios",
-            href: "/jefeAdmin/configuraciones/jefes",
-          },
-          {
-            title: "Menú",
-            href: "/jefeAdmin/configuraciones/menu",
-          },
-          {
-            title: "Roles",
-            href: "/jefeAdmin/configuraciones/roles",
-          },
-          {
-            title: "Funcionalidades",
-            href: "/jefeAdmin/configuraciones/funcionalidades",
-          },
-        ],
-      },
+   
     ],
   },
 ];
@@ -75,12 +53,12 @@ const sectionsAdminJefe = [
       {
         title: "Dashboard",
         icon: Dashboard,
-        href: "/jefeAdmin/dashboard",
+        href: "/empresa/dashboard",
       },
      {
         title: "Personal",
         icon: Dashboard,
-        href: "/jefeAdmin/hospitales/enfermero",
+        href: "/empresa/usuarios",
       },
 
       

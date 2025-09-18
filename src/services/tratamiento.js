@@ -4,7 +4,7 @@ const db = firebase.firestore();
 class TratamientoService {
   getTratamiento = (observer, IdHospital, IdPaciente, idHistorial) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(IdPaciente)
@@ -16,7 +16,7 @@ class TratamientoService {
   };
   newTratamiento = (data, IdHospital, IdPaciente, idHistorial,Tipo) => {
     return db
-      .collection("Hospitales")
+      .collection("Empresas")
       .doc(IdHospital)
       .collection("Pacientes")
       .doc(IdPaciente)

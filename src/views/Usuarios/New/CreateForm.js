@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import AddShoppingCartIcon from "@material-ui/icons/Add";
 import { useParams } from "react-router-dom";
-import firebase from "../../../../Firebase";
+import firebase from "../../../Firebase";
 import { RolService,UsuariosService } from "@services";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";

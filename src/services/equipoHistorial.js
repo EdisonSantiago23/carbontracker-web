@@ -4,7 +4,7 @@ const db = firebase.firestore();
 class EquipoHistorialService {
   getHistorial = (observer,IdHospital) => {
     return db
-    .collection("Hospitales")
+    .collection("Empresas")
     .doc(IdHospital)
     .collection("HistorialEquipos")
     .orderBy("FechaOn", "desc")
@@ -13,7 +13,7 @@ class EquipoHistorialService {
   };
   getHistorialById = (observer,IdHospital,IdArea) => {
     return db
-    .collection("Hospitales")
+    .collection("Empresas")
     .doc(IdHospital)
     .collection("HistorialEquipos")
     .where("IdArea", "==", IdArea)

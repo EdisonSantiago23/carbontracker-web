@@ -1,7 +1,7 @@
 import React from "react";
 import {TableCell, Box, Select, MenuItem, Grid,  TableRow } from '@mui/material';
 import { TablePage, ContentForm, Label, Container, confirmDialog, Iconify } from "@components";
-import { HospitalesTabla } from "@config"
+import { EmpresasTabla } from "@config"
 import { HospitalService, SoporteService } from '@services';
 import { sentenceCase } from 'change-case';
 import { useSnackbar } from "notistack";
@@ -11,21 +11,21 @@ const Index = () => {
   let nombre = 'Empresas';
   const [openModal, setOpenModal] = React.useState(false);
   const { enqueueSnackbar } = useSnackbar();
-  const [hospitales, setHospitales] = React.useState([]);
+  const [Empresas, setEmpresas] = React.useState([]);
   const [soporte, setSoporte] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [filteredData, setFilteredData] = React.useState({ data: [], page: 0, rowsPerPage: 5 });
   React.useEffect(() => {
-    getAllHospitales();
+    getAllEmpresas();
     getSoportes();
-  }, [getAllHospitales, getSoportes]);
+  }, [getAllEmpresas, getSoportes]);
 
-  const getAllHospitales = React.useCallback(() => {
-    HospitalService.getHospitales(
+  const getAllEmpresas = React.useCallback(() => {
+    HospitalService.getEmpresas(
       {
         next: (querySnapshot) => {
           const Items = querySnapshot.docs.map((docSnapshot) => docSnapshot);
-          setHospitales(Items);
+          setEmpresas(Items);
         },
       });
     setLoading(false);
@@ -87,8 +87,8 @@ const Index = () => {
       <Box mt={2}>
         <TablePage
           titulo={nombre}
-          Cabecera={HospitalesTabla()}
-          Lista={hospitales}
+          Cabecera={EmpresasTabla()}
+          Lista={Empresas}
           returnList={obtenerFIltrado}
           contenidoTabla={filteredData.data.slice(filteredData.page * filteredData.rowsPerPage, filteredData.page * filteredData.rowsPerPage + filteredData.rowsPerPage).map((row, index) => {
             const { Estado, LogoImg, Nombre } = row.data();
@@ -113,7 +113,7 @@ const Index = () => {
                       <Iconify icon={'material-symbols:house'} tooltip={'Áreas'} link={"/administrador/areas/" + row.id} />
                     </Grid>}
                     {row.data().Estado && <Grid>
-                      <Iconify icon={'ic:round-people'} tooltip={'Personal'} link={"/administrador/hospitales/personal/" + row.id} />
+                      <Iconify icon={'ic:round-people'} tooltip={'Personal'} link={"/administrador/Empresas/personal/" + row.id} />
                     </Grid>}
                 
                     {row.data().Estado && <Grid>
