@@ -9,7 +9,13 @@ import NavSection from "../../components/nav-section";
 import Img from "../../assets/img/c18.png";
 import Logo from "../../components/logo";
 
-import { Build, Dashboard,HomeWorkSharp,VaccinesIcon, MonitorHeartIcon } from "@material-ui/icons";
+import {
+  Build,
+  Dashboard,
+  HomeWorkSharp,
+  VaccinesIcon,
+  MonitorHeartIcon,
+} from "@material-ui/icons";
 
 import Scrollbar from "../../components/scrollbar";
 const NAV_WIDTH = 280;
@@ -36,13 +42,7 @@ const sectionsSuperAdministrador = [
         icon: HomeWorkSharp,
         href: "/administrador/hospitales",
       },
-      {
-        title: "Soporte ",
-        icon: Dashboard,
-        href: "/administrador/soporte",
-      },
 
- 
       {
         title: "Configuraciones",
         icon: Build,
@@ -64,10 +64,6 @@ const sectionsSuperAdministrador = [
             title: "Funcionalidades",
             href: "/jefeAdmin/configuraciones/funcionalidades",
           },
-          {
-            title: "Estados dosis",
-            href: "/jefeAdmin/configuraciones/estados",
-          },
         ],
       },
     ],
@@ -76,61 +72,18 @@ const sectionsSuperAdministrador = [
 const sectionsAdminJefe = [
   {
     items: [
-      // {
-      //   title: "Reportes",
-      //   icon: Build,
-      //   href: "/jefeAdmin/configuraciones/roles",
-      //   items: [
-      //     {
-      //       title: "Usuarios",
-      //       href: "/jefeAdmin/configuraciones/jefes",
-      //     },
-      //     {
-      //       title: "Roles",
-      //       href: "/jefeAdmin/configuraciones/roles",
-      //     },
-      //     {
-      //       title: "Funcionalidades",
-      //       href: "/jefeAdmin/configuraciones/funcionalidades",
-      //     },
-      //     {
-      //       title: "Estados dosis",
-      //       href: "/jefeAdmin/configuraciones/estados",
-      //     },
-      //   ],
-      // },
-    ],
-  },
-];
-const sectionsRecepcionista = [
-  {
-    items: [
       {
         title: "Dashboard",
         icon: Dashboard,
-        href: "/dashboard",
+        href: "/jefeAdmin/dashboard",
       },
-      {
-        title: "Pacientes",
+     {
+        title: "Personal",
         icon: Dashboard,
-        href: "/jefeAdmin/hospitales/Paciente",
+        href: "/jefeAdmin/hospitales/enfermero",
       },
-    ],
-  },
-];
-const sectionsRecepcionistaCard = [
-  {
-    items: [
-      {
-        title: "Dashboard",
-        icon: Dashboard,
-        href: "/dashboard",
-      },
-      {
-        title: "Pacientes",
-        icon: Dashboard,
-        href: "/jefeAdmin/hospitales/Paciente",
-      },
+
+      
     ],
   },
 ];
@@ -189,13 +142,9 @@ const validarSection = (nombreRol) => {
   switch (nombreRol) {
     case "super-administrador":
       return sectionsSuperAdministrador;
-    case "recepcionista":
-      return sectionsRecepcionista;
-
     case "jefe-enfermeria":
       return sectionsAdminJefe;
-    case "medico":
-      return [];
+
     default:
       return [];
   }
@@ -225,14 +174,7 @@ const NavBar = ({ openNav, onCloseNav }) => {
         },
       }}
     >
-      {/* <Box sx={{ px: 2.5, display: 'inline-flex', alignContent: "end" }}>
-        <IconButton
-          onClick={onCloseNav}
-          className={classes.icon}
-        >
-          <Menu />
-        </IconButton>
-      </Box> */}
+
 
       <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}>
         <Logo />

@@ -4,8 +4,6 @@ export const HospitalesTabla = () => {
     { id: "estado", label: "Estado" },
     { id: "name", label: "Logo" },
     { id: "name", label: "Nombre" },
-    { id: "name", label: "Codigo" },
-    { id: "fecha", label: "Soporte" },
     { id: "acciones", label: "Acciones" },
   ];
 

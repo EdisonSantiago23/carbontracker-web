@@ -11,18 +11,7 @@ const GuestGuard = ({ children }) => {
     if (rol.Tag == "super-administrador") {
       return <Redirect to="/administrador/dashboard" />;
     }
-    if (rol.Tag == "card") {
-      return <Redirect to="/administrador/dashboard" />;
-    }
-    if (rol.Tag == "monitoreo") {
-      return <Redirect to="/monitoreo/dashboard" />;
-    }
-    if (rol.Tag == "recepcionista") {
-      return <Redirect to="/administrador/dashboard" />;
-    }
-    if (rol.Tag == "medico") {
-      return <Redirect to="/administrador/dashboard" />;
-    }
+
     if (rol.Tag == "jefe-enfermeria") {
       return <Redirect to="/jefeAdmin/dashboard" />;
     } else {

@@ -8,7 +8,7 @@ import { useSnackbar } from "notistack";
 import CreateForm from "./CreateForm";
 
 const Index = () => {
-  let nombre = 'Enfermero';
+  let nombre = 'Empresas';
   const [openModal, setOpenModal] = React.useState(false);
   const { enqueueSnackbar } = useSnackbar();
   const [hospitales, setHospitales] = React.useState([]);
@@ -102,27 +102,7 @@ const Index = () => {
                   <Box component="img" src={LogoImg} alt={Nombre} sx={{ height: "70px", width: "auto" }} />
 
                 </TableCell>
-                <TableCell align="left">{Nombre}</TableCell>
-                <TableCell align="left">{row.id}</TableCell>
-
-                <TableCell align="left">
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={row.data()?.IdSoporte}
-                    label="Age"
-                    disabled={!row.data().Estado}
-                    style={{ width: 150 }}
-                    onChange={(e) => handleChange(e, row)}>
-                    {soporte.map((row, index) => {
-                      return (
-                        <MenuItem key={index} value={row.id}>
-                          {row.data().Nombre}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </TableCell>
+                <TableCell align="left">{Nombre}</TableCell>              
                 <TableCell align="left">
                   <Grid
                     container
@@ -135,9 +115,7 @@ const Index = () => {
                     {row.data().Estado && <Grid>
                       <Iconify icon={'ic:round-people'} tooltip={'Personal'} link={"/administrador/hospitales/personal/" + row.id} />
                     </Grid>}
-                    {row.data().Estado && <Grid>
-                      <Iconify icon={'ic:round-people'} tooltip={'Equipos'} link={"/administrador/Equipos/" + row.id} />
-                    </Grid>}
+                
                     {row.data().Estado && <Grid>
                       <ContentForm  data={row} openModal={openModal} content={<CreateForm data={row} close={() => setOpenModal(false)} />} />
                     </Grid>}

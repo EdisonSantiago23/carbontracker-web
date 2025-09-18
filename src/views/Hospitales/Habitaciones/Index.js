@@ -10,7 +10,6 @@ import TableRow from "@mui/material/TableRow";
 import { Tooltip, IconButton, } from '@mui/material';
 import Box from "@mui/material/Box";
 import New from "./New/New";
-import Cama from "../Cama/Cama";
 import { StyledTableRow, StyledTableCell } from "./../../../styles";
 import { useSnackbar } from "notistack";
 import { Autocomplete } from "../../../components";
